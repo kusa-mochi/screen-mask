@@ -4,11 +4,62 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Title="{Binding Title}"
-    Height="350"
-    Width="525">
+    WindowStyle="None"
+    WindowState="Maximized"
+    AllowsTransparency="True"
+    Background="Transparent"
+    Topmost="True">
+    <Window.Resources>
+        <SolidColorBrush
+            x:Key="MaskColor"
+            Color="Black" />
+    </Window.Resources>
     <Grid>
-        <ContentControl
-            prism:RegionManager.RegionName="ContentRegion" />
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid
+            x:Name="TopLeftGrid"
+            Width="200"
+            Height="100">
+        </Grid>
+        <Grid
+            x:Name="BottomRightGrid"
+            Grid.Row="2"
+            Grid.Column="2"
+            Width="400"
+            Height="50">
+        </Grid>
+        <Grid
+            x:Name="LeftGrid"
+            Grid.RowSpan="3"
+            Background="{StaticResource MaskColor}"></Grid>
+        <Grid
+            x:Name="TopGrid"
+            Grid.ColumnSpan="3"
+            Background="{StaticResource MaskColor}"></Grid>
+        <Grid
+            x:Name="RightGrid"
+            Grid.Column="2"
+            Grid.RowSpan="3"
+            Background="{StaticResource MaskColor}"></Grid>
+        <Grid
+            x:Name="BottomGrid"
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            Background="{StaticResource MaskColor}"></Grid>
     </Grid>
 </Window>
