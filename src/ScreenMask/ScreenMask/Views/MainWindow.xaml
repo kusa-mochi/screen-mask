@@ -197,8 +197,10 @@
     </Window.Resources>
     <Grid>
         <Rectangle
-            Fill="Black">
-            <Rectangle.OpacityMask>
+            x:Name="MaskRect"
+            Fill="Black"
+            OpacityMask="{Binding MaskBrush}">
+            <!--<Rectangle.OpacityMask>
                 <DrawingBrush>
                     <DrawingBrush.Drawing>
                         <GeometryDrawing>
@@ -218,7 +220,7 @@
                         </GeometryDrawing>
                     </DrawingBrush.Drawing>
                 </DrawingBrush>
-            </Rectangle.OpacityMask>
+            </Rectangle.OpacityMask>-->
         </Rectangle>
         <Canvas
             x:Name="EditorMenuDragArea">
@@ -257,11 +259,14 @@
                                     Value="24" />
                             </Style>
                         </StackPanel.Resources>
-                        <Button x:Name="MinimizeButton"
+                        <Button
+                            x:Name="MinimizeButton"
                             Click="MinimizeButton_Click">_</Button>
-                        <Button x:Name="MaximizeButton"
+                        <Button
+                            x:Name="MaximizeButton"
                             Click="MaximizeButton_Click">□</Button>
-                        <Button x:Name="CloseButton"
+                        <Button
+                            x:Name="CloseButton"
                             Click="CloseButton_Click">×</Button>
                     </StackPanel>
                     <WrapPanel
