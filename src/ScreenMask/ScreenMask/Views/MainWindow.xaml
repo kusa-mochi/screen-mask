@@ -196,56 +196,32 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="Auto" />
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <Grid
-            x:Name="TopLeftGrid"
-            Width="200"
-            Height="100">
-        </Grid>
-        <Grid
-            x:Name="BottomRightGrid"
-            Grid.Row="2"
-            Grid.Column="2"
-            Width="400"
-            Height="50">
-        </Grid>
-        <Grid
-            x:Name="LeftGrid"
-            Grid.RowSpan="3"
-            Background="{StaticResource MaskColor}"></Grid>
-        <Grid
-            x:Name="TopGrid"
-            Grid.ColumnSpan="3"
-            Background="{StaticResource MaskColor}"></Grid>
-        <Grid
-            x:Name="RightGrid"
-            Grid.Column="2"
-            Grid.RowSpan="3"
-            Background="{StaticResource MaskColor}"></Grid>
-        <Grid
-            x:Name="BottomGrid"
-            Grid.Row="2"
-            Grid.ColumnSpan="3"
-            Background="{StaticResource MaskColor}"></Grid>
+        <Rectangle
+            Fill="Black">
+            <Rectangle.OpacityMask>
+                <DrawingBrush>
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Brush>
+                                <SolidColorBrush
+                                    Color="#00000000" />
+                            </GeometryDrawing.Brush>
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry
+                                    Rect="0.05,0.05 0.9,0.9" />
+                            </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Pen>
+                                <Pen
+                                    Thickness="0.1"
+                                    Brush="Black" />
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Rectangle.OpacityMask>
+        </Rectangle>
         <Canvas
-            x:Name="EditorMenuDragArea"
-            Grid.RowSpan="3"
-            Grid.ColumnSpan="3">
+            x:Name="EditorMenuDragArea">
             <Border
                 x:Name="EditorMenu"
                 Canvas.Left="20"
@@ -283,9 +259,12 @@
                                     Value="24" />
                             </Style>
                         </StackPanel.Resources>
-                        <Button>_</Button>
-                        <Button>□</Button>
-                        <Button>×</Button>
+                        <Button x:Name="MinimizeButton"
+                            Click="MinimizeButton_Click">_</Button>
+                        <Button x:Name="MaximizeButton"
+                            Click="MaximizeButton_Click">□</Button>
+                        <Button x:Name="CloseButton"
+                            Click="CloseButton_Click">×</Button>
                     </StackPanel>
                     <WrapPanel
                         Width="72">
