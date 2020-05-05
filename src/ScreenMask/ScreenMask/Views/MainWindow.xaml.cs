@@ -15,11 +15,6 @@ namespace ScreenMask.Views
             InitializeComponent();
         }
 
-        private void EditorMenuThumb_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
-        {
-
-        }
-
         private void EditorMenuThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             Thumb thumb = sender as Thumb;
@@ -35,10 +30,6 @@ namespace ScreenMask.Views
 
             Canvas.SetLeft(EditorMenu, x);
             Canvas.SetTop(EditorMenu, y);
-        }
-
-        private void EditorMenuThumb_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
-        {
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

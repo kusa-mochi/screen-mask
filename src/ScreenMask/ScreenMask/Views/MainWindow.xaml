@@ -237,9 +237,7 @@
                     <Thumb
                         x:Name="EditorMenuThumb"
                         Height="12"
-                        DragStarted="EditorMenuThumb_DragStarted"
-                        DragDelta="EditorMenuThumb_DragDelta"
-                        DragCompleted="EditorMenuThumb_DragCompleted"></Thumb>
+                        DragDelta="EditorMenuThumb_DragDelta"></Thumb>
                     <StackPanel
                         Orientation="Horizontal">
                         <StackPanel.Resources>
