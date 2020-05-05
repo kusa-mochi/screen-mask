@@ -4,11 +4,11 @@ namespace ScreenMask.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
-        public string Title
+        private bool _IsEditingMode = true;
+        public bool IsEditingMode
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get { return _IsEditingMode; }
+            set { SetProperty(ref _IsEditingMode, value); }
         }
 
         public MainWindowViewModel()
