@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
 
@@ -20,8 +21,25 @@ namespace ScreenMask.ViewModels
         private DrawingBrush _MaskBrush;
         public DrawingBrush MaskBrush
         {
-            get { return _MaskBrush; }
+            get
+            {
+                return _MaskBrush;
+            }
             set { SetProperty(ref _MaskBrush, value); }
+        }
+
+        private ObservableCollection<Geometry> _HoleGeometries = new ObservableCollection<Geometry>();
+        public ObservableCollection<Geometry> HoleGeometries
+        {
+            get { return _HoleGeometries; }
+            set { SetProperty(ref _HoleGeometries, value); }
+        }
+
+        private ObservableCollection<Geometry> _BlockGeometries = new ObservableCollection<Geometry>();
+        public ObservableCollection<Geometry> BlockGeometries
+        {
+            get { return _BlockGeometries; }
+            set { SetProperty(ref _BlockGeometries, value); }
         }
 
         public MainWindowViewModel()
@@ -34,16 +52,16 @@ namespace ScreenMask.ViewModels
             RectangleGeometry block = new RectangleGeometry(new Rect(200, 150, 200, 200));
 
             Geometry maskGeometry = CombinedGeometryGenerator.Subtract(
+                rectGeometry,
                 new List<Geometry> {
-                    rectGeometry,
                     hole1,
                     hole2,
                     hole3
                 }
                 );
             maskGeometry = CombinedGeometryGenerator.Add(
+                maskGeometry,
                 new List<Geometry> {
-                    maskGeometry,
                     block
                 }
                 );
