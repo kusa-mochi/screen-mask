@@ -63,7 +63,7 @@ namespace ScreenMask.ViewModels
             Size screenSize = GetScreenVirtualResolution();
             RectangleGeometry rectGeometry = new RectangleGeometry(new Rect(0, 0, (int)screenSize.Width, (int)screenSize.Height));
             RectangleGeometry hole1 = new RectangleGeometry(new Rect(100, 50, 200, 200));
-            RectangleGeometry hole2 = new RectangleGeometry(new Rect(400, 500, 100, 50));
+            EllipseGeometry hole2 = new EllipseGeometry(new Rect(400, 500, 100, 50));
             RectangleGeometry hole3 = new RectangleGeometry(new Rect(400, 300, 10, 400));
             RectangleGeometry block = new RectangleGeometry(new Rect(200, 150, 200, 200));
 
