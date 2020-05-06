@@ -3,19 +3,21 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
 
+using Prism.Commands;
 using Prism.Mvvm;
 
 using ScreenMask.Drawing;
+using ScreenMask.Enums;
 
 namespace ScreenMask.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private bool _IsEditingMode = true;
-        public bool IsEditingMode
+        private bool _IsEditing = true;
+        public bool IsEditing
         {
-            get { return _IsEditingMode; }
-            set { SetProperty(ref _IsEditingMode, value); }
+            get { return _IsEditing; }
+            set { SetProperty(ref _IsEditing, value); }
         }
 
         private DrawingBrush _MaskBrush;
@@ -26,6 +28,13 @@ namespace ScreenMask.ViewModels
                 return _MaskBrush;
             }
             set { SetProperty(ref _MaskBrush, value); }
+        }
+
+        private EditType _EditType = EditType.None;
+        public EditType EditType
+        {
+            get { return _EditType; }
+            set { SetProperty(ref _EditType, value); }
         }
 
         private ObservableCollection<Geometry> _HoleGeometries = new ObservableCollection<Geometry>();
@@ -41,6 +50,13 @@ namespace ScreenMask.ViewModels
             get { return _BlockGeometries; }
             set { SetProperty(ref _BlockGeometries, value); }
         }
+
+        private DelegateCommand<EditType?> _SwitchEditTypeCommand;
+        public DelegateCommand<EditType?> SwitchEditTypeCommand =>
+            _SwitchEditTypeCommand ?? (_SwitchEditTypeCommand = new DelegateCommand<EditType?>(editType =>
+            {
+                EditType = editType ?? EditType.None;
+            }));
 
         public MainWindowViewModel()
         {

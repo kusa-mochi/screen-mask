@@ -3,13 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:enums="clr-namespace:ScreenMask.Enums"
     prism:ViewModelLocator.AutoWireViewModel="True"
     WindowStyle="None"
     WindowState="Maximized"
     AllowsTransparency="True"
     Background="Transparent"
     ResizeMode="CanResizeWithGrip"
-    Topmost="True">
+    Topmost="False">
     <Window.Resources>
         <SolidColorBrush
             x:Key="MaskColor"
@@ -278,10 +279,18 @@
                                     Value="Center" />
                             </Style>
                         </WrapPanel.Resources>
-                        <RadioButton>□</RadioButton>
-                        <RadioButton>○</RadioButton>
-                        <RadioButton>■</RadioButton>
-                        <RadioButton>●</RadioButton>
+                        <RadioButton
+                            Command="{Binding SwitchEditTypeCommand}"
+                            CommandParameter="{x:Static enums:EditType.RectHole}">□</RadioButton>
+                        <RadioButton
+                            Command="{Binding SwitchEditTypeCommand}"
+                            CommandParameter="{x:Static enums:EditType.EllipseHole}">○</RadioButton>
+                        <RadioButton
+                            Command="{Binding SwitchEditTypeCommand}"
+                            CommandParameter="{x:Static enums:EditType.RectBlock}">■</RadioButton>
+                        <RadioButton
+                            Command="{Binding SwitchEditTypeCommand}"
+                            CommandParameter="{x:Static enums:EditType.EllipseBlock}">●</RadioButton>
                     </WrapPanel>
                 </StackPanel>
             </Border>
