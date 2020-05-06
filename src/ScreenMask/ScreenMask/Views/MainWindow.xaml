@@ -259,16 +259,26 @@
                                     Property="Background"
                                     Value="White" />
                                 <Setter
+                                    Property="FontSize"
+                                    Value="24" />
+                                <Setter
                                     Property="Width"
                                     Value="36" />
                                 <Setter
                                     Property="Height"
                                     Value="36" />
+                                <Setter
+                                    Property="HorizontalContentAlignment"
+                                    Value="Center" />
+                                <Setter
+                                    Property="VerticalContentAlignment"
+                                    Value="Center" />
                             </Style>
                         </WrapPanel.Resources>
-                        <RadioButton></RadioButton>
-                        <RadioButton></RadioButton>
-                        <RadioButton></RadioButton>
+                        <RadioButton>□</RadioButton>
+                        <RadioButton>○</RadioButton>
+                        <RadioButton>■</RadioButton>
+                        <RadioButton>●</RadioButton>
                     </WrapPanel>
                 </StackPanel>
             </Border>
