@@ -1,7 +1,10 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Media;
 
 using Prism.Mvvm;
+
+using ScreenMask.Drawing;
 
 namespace ScreenMask.ViewModels
 {
@@ -23,22 +26,43 @@ namespace ScreenMask.ViewModels
 
         public MainWindowViewModel()
         {
-            SolidColorBrush drawingBrush = new SolidColorBrush();
-            Pen drawingPen = new Pen(
-                new SolidColorBrush(Color.FromRgb(0, 0, 0)),
-                0.1
+            Size screenSize = GetScreenVirtualResolution();
+            RectangleGeometry rectGeometry = new RectangleGeometry(new Rect(0, 0, (int)screenSize.Width, (int)screenSize.Height));
+            RectangleGeometry hole1 = new RectangleGeometry(new Rect(100, 50, 200, 200));
+            RectangleGeometry hole2 = new RectangleGeometry(new Rect(400, 500, 100, 50));
+            RectangleGeometry hole3 = new RectangleGeometry(new Rect(400, 300, 10, 400));
+            RectangleGeometry block = new RectangleGeometry(new Rect(200, 150, 200, 200));
+
+            Geometry maskGeometry = CombinedGeometryGenerator.Subtract(
+                new List<Geometry> {
+                    rectGeometry,
+                    hole1,
+                    hole2,
+                    hole3
+                }
                 );
-            RectangleGeometry drawingGeometry = new RectangleGeometry(
-                new Rect(0.05, 0.05, 0.9, 0.9)
+            maskGeometry = CombinedGeometryGenerator.Add(
+                new List<Geometry> {
+                    maskGeometry,
+                    block
+                }
                 );
 
             GeometryDrawing drawing = new GeometryDrawing(
-                drawingBrush,
-                drawingPen,
-                drawingGeometry
+                new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)),
+                new Pen(new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)), 0),
+                maskGeometry
                 );
-
             MaskBrush = new DrawingBrush(drawing);
+            MaskBrush.Stretch = Stretch.None;
+        }
+
+        private Size GetScreenVirtualResolution()
+        {
+            double width = SystemParameters.PrimaryScreenWidth;
+            double height = SystemParameters.PrimaryScreenHeight;
+
+            return new Size(width, height);
         }
     }
 }

@@ -39,7 +39,19 @@ namespace ScreenMask.Views
 
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            switch (this.WindowState)
+            {
+                case WindowState.Normal:
+                    this.WindowState = WindowState.Maximized;
+                    break;
+                case WindowState.Minimized:
+                    break;
+                case WindowState.Maximized:
+                    this.WindowState = WindowState.Normal;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

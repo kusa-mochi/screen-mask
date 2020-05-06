@@ -5,6 +5,7 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True"
     WindowStyle="None"
+    WindowState="Maximized"
     AllowsTransparency="True"
     Background="Transparent"
     ResizeMode="CanResizeWithGrip"
@@ -200,27 +201,6 @@
             x:Name="MaskRect"
             Fill="Black"
             OpacityMask="{Binding MaskBrush}">
-            <!--<Rectangle.OpacityMask>
-                <DrawingBrush>
-                    <DrawingBrush.Drawing>
-                        <GeometryDrawing>
-                            <GeometryDrawing.Brush>
-                                <SolidColorBrush
-                                    Color="#00000000" />
-                            </GeometryDrawing.Brush>
-                            <GeometryDrawing.Geometry>
-                                <RectangleGeometry
-                                    Rect="0.05,0.05 0.9,0.9" />
-                            </GeometryDrawing.Geometry>
-                            <GeometryDrawing.Pen>
-                                <Pen
-                                    Thickness="0.1"
-                                    Brush="Black" />
-                            </GeometryDrawing.Pen>
-                        </GeometryDrawing>
-                    </DrawingBrush.Drawing>
-                </DrawingBrush>
-            </Rectangle.OpacityMask>-->
         </Rectangle>
         <Canvas
             x:Name="EditorMenuDragArea">
