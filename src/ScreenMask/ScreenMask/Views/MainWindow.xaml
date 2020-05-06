@@ -197,14 +197,14 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid
-            x:Name="ThinLayerForEditing"
-            Background="#01ffffff" />
         <Rectangle
             x:Name="MaskRect"
             Fill="Black"
             OpacityMask="{Binding MaskBrush}">
         </Rectangle>
+        <Grid
+            x:Name="ThinLayerForEditing"
+            Background="#01ffffff" />
         <Canvas
             x:Name="EditorMenuDragArea">
             <Border
